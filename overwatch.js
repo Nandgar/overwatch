@@ -136,7 +136,7 @@ $("#contentContainer").eq(0).prepend(`<style>
 
 
 //collect player IDs
-$.get("/game.php?screen=ally&mode=members_defense", function (membersDef) {
+$.get("/game.php?t=*&village=*&screen=ally&mode=members_defense", function (membersDef) {
     options = $(membersDef).find('.input-nicer option:not(:first)');
     disabled = $(membersDef).find('.input-nicer option:not(:first):disabled');
     // get disabled users
@@ -148,13 +148,13 @@ $.get("/game.php?screen=ally&mode=members_defense", function (membersDef) {
     });
     //get all urls for the player info and buildings
     playerIDs.forEach(element => {
-        urls.push("/game.php?screen=ally&mode=members_defense&player_id=" + element)
+        urls.push("/game.php?t=*&village=*&screen=ally&mode=members_defense&player_id=" + element)
     });
 })
     .done(function () {
 
         //collect building sharing
-        $.get("/game.php?screen=ally&mode=members_buildings", function (membersBuildings) {
+        $.get("/game.php?t=*&village=*&screen=ally&mode=members_buildings", function (membersBuildings) {
             buildingOptions = $(membersBuildings).find('.input-nicer option:not(:first)');
 
             playerBuildingIDs = $.map(buildingOptions, function (option) {
@@ -162,7 +162,7 @@ $.get("/game.php?screen=ally&mode=members_defense", function (membersDef) {
             });
             //get all urls for the player info and buildings
             playerBuildingIDs.forEach(element => {
-                buildingUrls.push("/game.php?screen=ally&mode=members_buildings&player_id=" + element)
+                buildingUrls.push("/game.php?t=*&village=*&screen=ally&mode=members_buildings&player_id=" + element)
             });
         })
             .done(function () {
